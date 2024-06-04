@@ -1,4 +1,3 @@
--- Before insert trigger for users
 CREATE TRIGGER before_insert_user
 BEFORE INSERT ON users
 FOR EACH ROW
@@ -6,7 +5,6 @@ BEGIN
     SET NEW.created_at = NOW();
 END;
 
--- After insert trigger for users
 CREATE TRIGGER after_insert_user
 AFTER INSERT ON users
 FOR EACH ROW
@@ -14,7 +12,6 @@ BEGIN
     INSERT INTO profiles (user_id, profile_created_at) VALUES (NEW.user_id, NOW());
 END;
 
--- Before update trigger for reviews
 CREATE TRIGGER before_update_review
 BEFORE UPDATE ON reviews
 FOR EACH ROW
@@ -27,7 +24,6 @@ BEGIN
     END IF;
 END;
 
--- After update trigger for reviews
 CREATE TRIGGER after_update_review
 AFTER UPDATE ON reviews
 FOR EACH ROW
